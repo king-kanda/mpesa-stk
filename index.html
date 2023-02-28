@@ -1,108 +1,244 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>My Market Page</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<title>
+		Shop Yetu.
+	</title>
+
 	<style>
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f5f5f5;
+		.product{
+			width: 100%;
+			height: 300px;
+			object-fit: cover;
 		}
 
-		.container {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #fff;
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-			border-radius: 5px;
+		.cart{
+			background-color: #000000;
+			color: rgb(255, 255, 255);
+			border-radius: 0%;
+			width: 100%;
+			font-size: 20px;
 		}
-
-		h1 {
-			font-size: 36px;
-			margin-bottom: 20px;
-			text-align: center;
-			color: #444;
-		}
-
-		.product {
-			margin: 20px;
-			padding: 10px;
-			background-color: #fff;
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-			border-radius: 5px;
-		}
-
-		.product img {
-			max-width: 100%;
-			height: auto;
-			display: block;
-			margin: 0 auto;
-		}
-
-		.product h2 {
-			font-size: 24px;
-			margin-top: 10px;
-			margin-bottom: 5px;
-			color: #444;
-		}
-
-		.product p {
-			font-size: 18px;
-			margin-top: 5px;
-			margin-bottom: 10px;
-			color: #666;
-		}
-
-		.product button {
-			display: block;
-			margin: 0 auto;
-			padding: 10px 20px;
-			background-color: #0066cc;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			font-size: 18px;
-			cursor: pointer;
+		.buy{
+			background-color: #0044ff;
+			color: rgb(255, 255, 255);
+			border-radius: 0%;
+			width: 100%;
+			font-size: 20px;
 		}
 	</style>
+
 </head>
-
 <body>
-	<div class="container">
-		<h1>Welcome to My Market</h1>
-		<div class="product">
-			<img src="./images/photo.jpeg" alt="Product Image">
-			<h2>Au de Guts </h2>
-			<p id="price ">$19.99</p>
-			<div>
-				<form action="./checkout.php" method="POST">
-					<input type="number" name="price" id="quantity" value="250">
+	<!-- nav -->
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container p-3">
+		  <a class="navbar-brand fw-bold" href="#">
+			Shop Yetu
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="#">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Sign Up</a>
+			  </li>
+			 
+			  <li class="nav-item">
+				<a class="nav-link disabled">Mark Assigment</a>
+			  </li>
+			</ul>
+			<form class="d-flex" role="search">
+			  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-outline-dark" type="submit">Search</button>
+			</form>
+		  </div>
+		</div>
+	</nav>
+	
+	<!-- product section -->
+	<!-- section containing the product an the final pricing -->
+	<section class="container">
+		<div class="container p-3 text-cventer">
+			<div class="row">
 
-					<button type="submit" name="submit"> Buy </button>
+			  <div class="col">
+				<!-- prodct column -->
+				<div class="image-container">
+					<img class="img-fluid product" src="images/photo.jpeg" alt="">
+				</div>
+				<div class="product-details p-2">
+					<div class="row p-2">
+						<div class="col">
+							<h4 class="product-name fw-bold">Au De Guts</h3>
+						</div>
+						<div class="col text-end">
+							<h5 class="product-price fw-bold color-dark"> ksh 250</h5>
+						</div>
+					</div>
+					<p class="product-description">Introducing "Au De Gut" - the audacity-inspired cologne that will leave you feeling confident and bold. This modern twist on a classic joke is now available in a convenient can, so you can take your audacity on the go.
+					</p>
+				</div>
+				<div class="row mt-3">
+					<div class="col">
+						<button class="btn btn-dark btn-lg w-50 rounded-0" type="submit" name="checkout" value="Checkout">
+							add to cart
+						</button>
+					</div>
+				</div>
+			
+				
+			
+			  </div>
+
+			  <div class="col">
+				<!-- this is a checkout from -->
+				<div class="card p-1">
+					<div class="card-header">
+						<h5 class="fw-bold">Checkout</h5>
+					</div>
+					<!-- create a checkout form -->
+					<div class="card-body">
+						<form id="myForm" action="./stk.php" method="POST">
+							<div class="row">
+								<div class="col">
+									<label for="name">Name</label>
+									<input class="form-control" type="text" name="name" id="name" placeholder="Enter your name">
+								</div>
+								<div class="col">
+									<label for="email">Email</label>
+									<input class="form-control" type="email" name="email" id="email" placeholder="Enter your email">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="phone">Phone</label>
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="basic-addon1">254</span>
+										<input class="form-control" type="text" name="phone" id="phone" placeholder="7xxxxxxxx">
+									</div>
+								</div>
+								<div class="col">
+									<label for="address">Address</label>
+									<input class="form-control" type="text" name="address" id="address" placeholder="Enter your address">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="city">City</label>
+									<input class="form-control" type="text" name="city" id="city" placeholder="Enter your city">
+								</div>
+								<div class="col">
+									<label for="country">Country</label>
+									<input class="form-control" type="text" name="country" id="country" placeholder="Enter your country">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<label for="zip">Zip</label>
+									<input class="form-control" type="text" name="zip" id="zip" placeholder="Enter your zip">
+								</div>
+								<div class="col">
+									<label for="payment">Payment</label>
+									<select class="form-select" name="payment" id="payment">
+										<option value="cash">Cash</option>
+										<option value="mpesa">Mpesa</option>
+										<option value="paypal">Paypal</option>
+									</select>
+								</div>
+							</div>
+							<!-- section where product name and total are place and a a checkout button -->
+							<div class="row card-footer p-2 mt-2">
+								<div class="col ">
+									<h5 class="fw-bold text-decoration-underline">Product</h5>
+									<p class="fw-bold display-10">Au De Guts</p>
+								</div>
+								<div class="col text-center">
+									<h5 class="fw-bold text-decoration-underline">Quantity</h5>
+									 <!-- profuct counter for qunatity include a plus and a minus btn -->
+									<div class="input-group">
+										<button class="btn btn-outline-secondary" type="button" id="button-sub1">-</button>
+										<input type="text" class="form-control text-center" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" id="quantity" >
+										<button class="btn btn-outline-secondary" type="button" id="button-addon1">+</button>
+									</div>
+								</div>
+								<div class="col text-end">
+									<h5 class="fw-bold text-decoration-underline">Total</h5>
+									<p class="fw-bold">ksh <span id="total-price"> 250</span> </p>
+									<input id="qunt" class="d-none" type="text" name="amount" >
+								</div>
+						</div>
+						<!-- create a div with a span containgi product something -->
+						<div class="row">
+							<div class="col">
+								<span class="fw-thin fst-italic">
+									So why settle for a boring, ordinary cologne when you can have Au De Gut? Try it today and discover the power of audacity in a can.
+								</span>
+							</div>
+						<!-- create a full width btn for checkout -->
+						
+							<input class="d-none" type="text" name="product_name" value="Au De Guts">
+							<input class="d-none" type="text" name="product_price" value="250">
+							<input class="d-none" type="text" name="product_id" value="1">
+
+							<div class="row mt-3">
+								<div class="col">
+									<button class="btn btn-dark btn-lg w-100 rounded-0" type="submit" name="checkout" value="Checkout">
+										Checkout
+									</button>
+								</div>
+							</div>
 				</form>
-			</div>
+						
+		  </div>
+	</section>
+	
+
+<!--  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!--  -->
+<script>
+	// 
+
+	document.getElementById('quantity').value = "1";
+	var quantity = document.getElementById('quantity').value;
+	document.getElementById('qunt').value = "250"
 
 
-		</div>
-		<div class="product">
-			<img src="https://images.pexels.com/photos/12456260/pexels-photo-12456260.jpeg?auto=compress&cs=tinysrgb&w=600"
-				alt="Product Image">
-			<h2>Ewee De Nyoks</h2>
-			<p id="price ">$29.99</p>
-			<button> <a href="./checkout.php"></a> buy</button>
-		</div>
-		<div class="product">
-			<img src="https://via.placeholder.com/300x200" alt="Product Image">
-			<h2>Product Name</h2>
-			<p id="price ">$39.99</p>
-			<button> <a href="./checkout.php"></a> buy</button>
-		</div>
-	</div>
+	document.getElementById('button-addon1').addEventListener('click', function(){
+		
+		quantity++;
+		price = quantity * 1 ;
+		document.getElementById('quantity').value = quantity;
+		document.getElementById('total-price').innerHTML = price;
+		document.getElementById('qunt').value = price;
 
-	<script>
-		console.log(document.getElementById("price"))
-	</script>
+	});
+
+	document.getElementById('button-sub1').addEventListener('click', function(){
+		
+		quantity--;
+		price = quantity * 1 ;
+		document.getElementById('quantity').value = quantity;
+		document.getElementById('total-price').innerHTML = price;
+		document.getElementById('qunt').value = price
+
+	});
+
+	
+	// document.getElementById('qunt').value = "250";
+	
+
+	
+	
+</script>
 </body>
-
 </html>

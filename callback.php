@@ -7,10 +7,11 @@
      }';
  
      // DATA
-     $mpesaResponse = file_get_contents('php://input');
- 
+
+     $mpesaResponse = json_decode(file_get_contents('php://input'));
+     
      // log the response
-     $logFile = "M_PESAConfirmationResponse.txt";
+     $logFile = "M_PESAConfirmationResponse.json";
  
      // write to file
      $log = fopen($logFile, "a");
@@ -19,3 +20,4 @@
      fclose($log);
  
      echo $response;
+     echo $mpesaResponse;

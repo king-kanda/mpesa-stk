@@ -240,17 +240,19 @@
 		document.getElementById('button-addon1').addEventListener('click', function () {
 
 			quantity++;
-			price = quantity * 250;
+			price = quantity * 1;
 			document.getElementById('quantity').value = quantity;
 			document.getElementById('total-price').innerHTML = price;
 			document.getElementById('qunt').value = price;
 
 		});
 
+		
+
 		document.getElementById('button-sub1').addEventListener('click', function () {
 
 			quantity--;
-			price = quantity * 250;
+			price = quantity * 1;
 			document.getElementById('quantity').value = quantity;
 			document.getElementById('total-price').innerHTML = price;
 			document.getElementById('qunt').value = price

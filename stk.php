@@ -1,30 +1,30 @@
 <?php
-if(isset($_POST['checkout'])){
+if (isset($_POST['checkout'])) {
 
 
   date_default_timezone_set('Africa/Nairobi');
 
   # access token
-  $consumerKey = 'lRjzW1Ow0O54aog5mTkqDIULp2rzOlAe'; //Fill with your app Consumer Key
-  $consumerSecret = 'tJ3DhcgR8iXG9ZZW'; // Fill with your app Secret
+  $consumerKey = 'vo970nUVsZaT2BrnEe70a1DPMtfDTkkU'; //Fill with your app Consumer Key
+  $consumerSecret = 'iBX71PxlZxaLWjl0'; // Fill with your app Secret
 
   # define the variales
   # provide the following details, this part is found on your test credentials on the developer account
   $BusinessShortCode = '174379';
-  $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
-  
-  
-  
+  $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+
+
+
   $PartyA = $_POST['phone'];
   $AccountReference = 'okanda';
   $TransactionDesc = 'Test Payment';
   $Amount = $_POST['amount'];
- 
-  
-  $Timestamp = date('YmdHis');    
-  
+
+
+  $Timestamp = date('YmdHis');
+
   # Get the base64 encoded string -> $password. The passkey is the M-PESA Public Key
-  $Password = base64_encode($BusinessShortCode.$Passkey.$Timestamp);
+  $Password = base64_encode($BusinessShortCode . $Passkey . $Timestamp);
 
   # header for access token
   $headers = ['Content-Type:application/json; charset=utf8'];
@@ -34,21 +34,22 @@ if(isset($_POST['checkout'])){
   $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
   # callback url
-  $CallBackURL = 'https://a10b-41-80-105-241.in.ngrok.io/mpesa/callback.php';  
+  $CallBackURL = 'https://f958-105-162-31-118.in.ngrok.io/mpesa/callback.php';
+
 
   $curl = curl_init($access_token_url);
   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($curl, CURLOPT_HEADER, FALSE);
-  curl_setopt($curl, CURLOPT_USERPWD, $consumerKey.':'.$consumerSecret);
+  curl_setopt($curl, CURLOPT_USERPWD, $consumerKey . ':' . $consumerSecret);
   $result = curl_exec($curl);
   $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
   $result = json_decode($result);
-  $access_token = $result->access_token;  
+  $access_token = $result->access_token;
   curl_close($curl);
 
   # header for stk push
-  $stkheader = ['Content-Type:application/json','Authorization:Bearer '.$access_token];
+  $stkheader = ['Content-Type:application/json', 'Authorization:Bearer ' . $access_token];
 
   # initiating the transaction
   $curl = curl_init();
@@ -79,4 +80,3 @@ if(isset($_POST['checkout'])){
 
   echo $curl_response;
 };
-?>

@@ -34,7 +34,7 @@ if (isset($_POST['checkout'])) {
   $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
   # callback url
-  $CallBackURL = 'https://f958-105-162-31-118.in.ngrok.io/mpesa/callback.php';
+  $CallBackURL = 'https://b607-105-162-22-60.in.ngrok.io/mpesa/callback.php';
 
 
   $curl = curl_init($access_token_url);
@@ -78,5 +78,5 @@ if (isset($_POST['checkout'])) {
   $curl_response = curl_exec($curl);
   print_r($curl_response);
 
-  echo $curl_response;
+  // echo $curl_response;
 };
